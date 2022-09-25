@@ -1,5 +1,5 @@
-import ChooseFolder from "./ChooseFolder";
-import FolderInfoService from "./FolderInfoService";
+import ChooseFolder from './ChooseFolder';
+import FolderInfoService from './FolderInfoService';
 
 export default function InitializeServices() {
   ChooseFolder();

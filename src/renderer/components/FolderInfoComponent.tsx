@@ -1,4 +1,5 @@
 import { FolderInfoChannel } from "main/constants/constants"
+import { bigFile, oldFile } from "main/constants/types"
 import { useEffect, useState } from "react"
 
 export default function FolderInfo({ changeAction }: FolderInfoProps) {
@@ -35,5 +36,7 @@ interface FolderInfoProps {
 
 interface InfoData {
   folderCount: number,
-  fileCount: number
+  fileCount: number,
+  oldest5Files: oldFile[],
+  biggest5Files: bigFile[]
 }
