@@ -140,10 +140,14 @@ a:hover {
   width: 100%;
 }
 
+.page-container {
+  max-width: 600px;
+  margin: 0 auto
+}
+
 .choose-file {
   font-size: large;
   margin: 20px auto;
-  max-width: 480px;
   padding: 10px 20px;
   display: flex;
   flex-wrap: wrap;
@@ -159,11 +163,21 @@ a:hover {
 
 .chosen-file-div span {
   display: inline-block;
-  max-width: 273px;
+  max-width: 300px;
   overflow-x: auto;
   margin-bottom: -5px;
 }
 
 .chosen-file-div button {
   margin-left: 10px;
+}
+
+.page-inner-container {
+  background-color: #221c1c54;
+  border-radius: 10px;
+
+}
+
+.title-container {
+  text-align: center;
 }

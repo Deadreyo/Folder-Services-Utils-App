@@ -8,8 +8,6 @@ export default function ChooseFolder() {
       properties: ["openDirectory", "showHiddenFiles"]
     })
 
-    console.log(path)
-
     event.reply(ChooseFolderChannel, path.filePaths)
 
   })

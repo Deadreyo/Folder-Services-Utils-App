@@ -1,5 +1,5 @@
 import { MemoryRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import './App.css';
+import '../App.css';
 import Homepage from './Homepage';
 import PagesLayout from './PagesLayout';
 
