@@ -1,7 +1,7 @@
 import { MemoryRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import Homepage from './Homepage';
-import Page from './Page';
+import Page from './PagesLayout';
 
 export default function App() {
   return (
