@@ -22,6 +22,11 @@
   overflow-y: hidden;
 }
 
+#root {
+  height: 100%;
+  overflow-y: auto;
+}
+
 button {
   background-color: white;
   padding: 10px 20px;
@@ -49,7 +54,6 @@ a {
   text-decoration: none;
   height: fit-content;
   width: fit-content;
-  margin: 10px;
 }
 
 a:hover {
@@ -79,8 +83,34 @@ a:hover {
 
 .card {
   width: 33%;
+  text-align: center;
+  margin: 10px;
+  box-shadow: 0px 0px 2px 0px black;
+  border-radius: 40px;
+  color: black;
+
+  transition: filter 1s;
+  transition: background-color 1s;
 }
 
 .card img {
   width: 100%;
+}
+
+.card-title {
+  margin: 0;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  color: inherit;
+}
+
+.card > a {
+  color: inherit;
+}
+
+.card:hover {
+  /* background-color: red; */
+  filter: drop-shadow(2px 4px 6px black);
+  background-color: grey;
+  color: #700876;
 }
