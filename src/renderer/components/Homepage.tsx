@@ -5,7 +5,7 @@ export default function Homepage() {
   return (
     <div className="homepage">
       <div className="row">
-        <Card icon={icon} link="/" title='Folder Info' />
+        <Card icon={icon} link="/info" title='Folder Info' />
         <Card icon={icon} link="/" title='Search in Folder' />
       </div>
       <div className="row">
