@@ -1,7 +1,7 @@
 import { MemoryRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import Homepage from './Homepage';
-import Page from './PagesLayout';
+import PagesLayout from './PagesLayout';
 
 export default function App() {
   return (
@@ -10,7 +10,9 @@ export default function App() {
       <main className="container">
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path='/info' element={<Page />} />
+          <Route element={<PagesLayout />}>
+            <Route path='/info' element={<div />} />
+          </Route>
         </Routes>
       </main>
     </Router>

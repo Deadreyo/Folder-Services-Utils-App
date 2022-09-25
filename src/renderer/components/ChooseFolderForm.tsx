@@ -6,7 +6,6 @@ export default function ChooseFolderForm({ changePath }: ChooseFolderProps) {
 
   const onClick: MouseEventHandler = () => {
     window.electron.ipcRenderer.sendMessage(ChooseFolderChannel, ["hi"])
-    // Electron.ipcRenderer.send(ChooseFolderChannel, ['ping'])
     window.electron.ipcRenderer.once(ChooseFolderChannel, (args) => {
       if(args instanceof Array && args.length > 0) {
         alert('Success!')
