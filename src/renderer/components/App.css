@@ -68,7 +68,12 @@ a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.header > a {
   text-shadow: 0px 0px 6px darkgoldenrod;
+  color: white;
+
 }
 
 .container {
