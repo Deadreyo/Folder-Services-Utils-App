@@ -1,9 +1,9 @@
-import { ChooseFolderChannel } from 'main/constants/constants';
-import { MouseEventHandler, ReactNode, useRef, useState } from 'react';
+import { useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import ChooseFolderForm from './ChooseFolderForm';
 import icon from './icon.png';
 
-export default function PagesLayout({ children }: PagesLayoutProps) {
+export default function PagesLayout() {
   const [path, setPath] = useState('')
 
   function changePath(path: string) {
@@ -18,11 +18,9 @@ export default function PagesLayout({ children }: PagesLayoutProps) {
       </div>
 
       <ChooseFolderForm changePath={changePath} />
-      {children}
+      <Routes>
+        <Route path='/info' element={<div />} />
+      </Routes>
     </div>
   )
-}
-
-interface PagesLayoutProps {
-  children?: ReactNode
 }

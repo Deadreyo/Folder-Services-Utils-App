@@ -10,9 +10,7 @@ export default function App() {
       <main className="container">
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route element={<PagesLayout />}>
-            <Route path='/info' element={<div />} />
-          </Route>
+          <Route path='*' element={<PagesLayout />} />
         </Routes>
       </main>
     </Router>
