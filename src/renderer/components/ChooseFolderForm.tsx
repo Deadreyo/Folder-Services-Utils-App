@@ -1,10 +1,10 @@
 import { ChooseFolderChannel } from "main/constants/constants"
 import { useState, MouseEventHandler } from "react"
 
-export default function ChooseFolderForm({ changePath }: ChooseFolderProps) {
+export default function ChooseFolderForm({ changePath, submitAction }: ChooseFolderProps) {
   const [path, setPath] = useState('')
 
-  const onClick: MouseEventHandler = () => {
+  const onPathClick: MouseEventHandler = () => {
     window.electron.ipcRenderer.sendMessage(ChooseFolderChannel, ["hi"])
     window.electron.ipcRenderer.once(ChooseFolderChannel, (args) => {
       if(args instanceof Array && args.length > 0) {
@@ -18,6 +18,10 @@ export default function ChooseFolderForm({ changePath }: ChooseFolderProps) {
     })
   }
 
+  const onSubmit: MouseEventHandler = () => {
+    submitAction(path);
+  }
+
   return (
 
     <div>
@@ -25,7 +29,8 @@ export default function ChooseFolderForm({ changePath }: ChooseFolderProps) {
         <label htmlFor="submit">Choose Folder</label>
         <div className='chosen-file-div'>
           <span>{path}</span>
-          <button id="submit" type='button' onClick={onClick}>...</button>
+          <button id="submit" type='button' onClick={onPathClick}>...</button>
+          <button type="button" onClick={onSubmit}>Submit</button>
         </div>
       </form>
     </div>
@@ -35,4 +40,5 @@ export default function ChooseFolderForm({ changePath }: ChooseFolderProps) {
 
 interface ChooseFolderProps {
   changePath: (path: string) => void
+  submitAction: (path: string) => void
 }

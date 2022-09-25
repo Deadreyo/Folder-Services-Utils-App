@@ -5,9 +5,14 @@ import icon from './icon.png';
 
 export default function PagesLayout() {
   const [path, setPath] = useState('')
+  const [action, setAction] = useState<(path: string) => void>( () => () => {})
 
   function changePath(path: string) {
     setPath(path)
+  }
+
+  function changeAction(func: (path: string) => void) {
+    setAction( () => func)
   }
 
   return (
@@ -17,10 +22,12 @@ export default function PagesLayout() {
         <h2 className="card-title">Folder Info</h2>
       </div>
 
-      <ChooseFolderForm changePath={changePath} />
+      <div className='page-container'>
+      <ChooseFolderForm changePath={changePath} submitAction={action} />
       <Routes>
         <Route path='/info' element={<div />} />
       </Routes>
+      </div>
     </div>
   )
 }
