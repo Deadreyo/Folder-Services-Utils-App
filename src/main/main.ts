@@ -14,6 +14,7 @@ import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
+import InitializeServices from './services/InitializeServices';
 
 class AppUpdater {
   constructor() {
@@ -79,7 +80,7 @@ const createWindow = async () => {
       preload: app.isPackaged
         ? path.join(__dirname, 'preload.js')
         : path.join(__dirname, '../../.erb/dll/preload.js'),
-      devTools: isDebug,
+        devTools: isDebug
     },
   });
 
@@ -137,3 +138,5 @@ app
     });
   })
   .catch(console.log);
+
+InitializeServices()
