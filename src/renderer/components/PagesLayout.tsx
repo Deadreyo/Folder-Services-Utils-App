@@ -3,11 +3,16 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 import ChooseFolderForm from './ChooseFolderForm';
 import CompressImageComponent from './CompressImageComponent';
 import FolderInfo from './FolderInfoComponent';
-import icon from './icon.png';
 import SearchInFolderComponent from './SearchInFolderComponent';
+import infoIcon from '../assets/info.png'
+import searchIcon from '../assets/search.png'
+import compressIcon from '../assets/data-compression.png'
+import bundleIcon from '../assets/data-collection.png'
+import defaultIcon from '../assets/icon.png'
 
 export default function PagesLayout() {
   const [title, setTitle] = useState('Title')
+  const [icon, setIcon] = useState(defaultIcon)
   const [action, setAction] = useState<(path: string) => void>(() => () => {
     alert('f');
   });
@@ -15,21 +20,30 @@ export default function PagesLayout() {
 
   // Change the title of the page depending on the route location
   useEffect( () => {
-    let val = 'Title'
+    let text = 'Title'
+    let icon = ''
     const loc = location.pathname
     switch (loc) {
       case '/info':
-        val = 'Folder Info'
+        text = 'Folder Info'
+        icon = infoIcon
         break;
       case '/compress':
-        val = 'Compress Images'
+        text = 'Compress Images'
+        icon = compressIcon
         break;
       case '/search':
-        val = 'Deep Image Search'
+        text = 'Deep Image Search'
+        icon = searchIcon
+        break;
+      case '/bundle':
+        text = 'Subfolders Extractor'
+        icon = bundleIcon
         break;
     }
 
-    setTitle(val);
+    setTitle(text);
+    setIcon(icon)
   }, [])
 
   function changeAction(func: (path: string) => void) {
