@@ -82,7 +82,7 @@ const createWindow = async () => {
         : path.join(__dirname, '../../.erb/dll/preload.js'),
       devTools: isDebug,
     },
-    title: "Folders Service Utility"
+    title: 'Folders Service Utility',
   });
 
   mainWindow.loadURL(resolveHtmlPath('index.html'));

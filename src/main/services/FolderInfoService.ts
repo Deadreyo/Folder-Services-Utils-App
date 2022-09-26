@@ -76,7 +76,6 @@ export default function FolderInfoService() {
 
           CompareDate();
           CompareSize();
-
         } else {
           folderCount++;
           await readDir(join(path, file));
@@ -86,8 +85,8 @@ export default function FolderInfoService() {
     }
     await readDir(args[0]);
 
-    oldest5Files = oldest5Files.filter( val => val.name !== "test")
-    biggest5Files = biggest5Files.filter( val => val.name !== "test")
+    oldest5Files = oldest5Files.filter((val) => val.name !== 'test');
+    biggest5Files = biggest5Files.filter((val) => val.name !== 'test');
 
     console.log(oldest5Files);
     console.log(biggest5Files);

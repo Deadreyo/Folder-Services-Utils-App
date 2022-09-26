@@ -1,27 +1,34 @@
-import { CompressImagesChannel } from "main/constants/constants"
-import { compressStatistic } from "main/constants/types"
-import { useEffect, useState } from "react"
+import { CompressImagesChannel } from 'main/constants/constants';
+import { compressStatistic } from 'main/constants/types';
+import { useEffect, useState } from 'react';
 
-export default function CompressImageComponent({ changeAction }: CompressImageProps) {
-  const [statistics, setStatistics] = useState<compressStatistic[] | null>(null)
-  const [resultPath, setResultPath] = useState('')
+export default function CompressImageComponent({
+  changeAction,
+}: CompressImageProps) {
+  const [statistics, setStatistics] = useState<compressStatistic[] | null>(
+    null
+  );
+  const [resultPath, setResultPath] = useState('');
   const action = (path: string) => {
-    window.electron.ipcRenderer.sendMessage(CompressImagesChannel, [path])
+    window.electron.ipcRenderer.sendMessage(CompressImagesChannel, [path]);
 
     window.electron.ipcRenderer.once(CompressImagesChannel, (statisticsArr) => {
-      if(statisticsArr && statisticsArr instanceof Array && statisticsArr.length > 0) {
-        setStatistics(statisticsArr as compressStatistic[])
-        setResultPath(path+'\\compressed')
+      if (
+        statisticsArr &&
+        statisticsArr instanceof Array &&
+        statisticsArr.length > 0
+      ) {
+        setStatistics(statisticsArr as compressStatistic[]);
+        setResultPath(`${path}\\compressed`);
       } else {
-        alert('Error occured.')
+        alert('Error occured.');
       }
-    })
+    });
+  };
 
-  }
-
-  useEffect( () => {
-    changeAction(action)
-  }, [])
+  useEffect(() => {
+    changeAction(action);
+  }, []);
 
   if (!statistics) return null;
 
@@ -42,19 +49,19 @@ export default function CompressImageComponent({ changeAction }: CompressImagePr
           </tr>
         </thead>
         <tbody>
-        {statistics.map( stat => (
-          <tr key={stat.name}>
-            <td>{stat.name}</td>
-            <td>{stat.before}</td>
-            <td>{stat.after}</td>
-          </tr>
-        ))}
+          {statistics.map((stat) => (
+            <tr key={stat.name}>
+              <td>{stat.name}</td>
+              <td>{stat.before}</td>
+              <td>{stat.after}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
-  )
+  );
 }
 
 interface CompressImageProps {
-  changeAction: (action: (path: string) => void) => void
+  changeAction: (action: (path: string) => void) => void;
 }

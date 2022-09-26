@@ -14,9 +14,9 @@ export type compressStatistic = {
   name: string;
   before: string;
   after: string;
-}
+};
 
 export type searchFile = {
-  name: string,
-  path: string
-}
+  name: string;
+  path: string;
+};

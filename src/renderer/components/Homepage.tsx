@@ -1,8 +1,8 @@
 import Card from './Card';
-import infoIcon from '../assets/info.png'
-import searchIcon from '../assets/search.png'
-import compressIcon from '../assets/data-compression.png'
-import bundleIcon from '../assets/data-collection.png'
+import infoIcon from '../assets/info.png';
+import searchIcon from '../assets/search.png';
+import compressIcon from '../assets/data-compression.png';
+import bundleIcon from '../assets/data-collection.png';
 
 export default function Homepage() {
   return (

@@ -1,29 +1,31 @@
-import { FolderInfoChannel } from "main/constants/constants"
-import { bigFile, oldFile } from "main/constants/types"
-import { useEffect, useState } from "react"
+import { FolderInfoChannel } from 'main/constants/constants';
+import { bigFile, oldFile } from 'main/constants/types';
+import { useEffect, useState } from 'react';
 
 export default function FolderInfo({ changeAction }: FolderInfoProps) {
-  const [data, setData] = useState<InfoData | null>(null)
+  const [data, setData] = useState<InfoData | null>(null);
 
   const action = (path: string) => {
-    window.electron.ipcRenderer.sendMessage(FolderInfoChannel, [path])
+    window.electron.ipcRenderer.sendMessage(FolderInfoChannel, [path]);
 
-    window.electron.ipcRenderer.once(FolderInfoChannel, (folderCount,  fileCount, oldest5Files, biggest5Files) => {
-      const obj: InfoData = {
-        folderCount: folderCount as number,
-        fileCount: fileCount as number,
-        oldest5Files: oldest5Files as oldFile[],
-        biggest5Files: biggest5Files as bigFile[]
+    window.electron.ipcRenderer.once(
+      FolderInfoChannel,
+      (folderCount, fileCount, oldest5Files, biggest5Files) => {
+        const obj: InfoData = {
+          folderCount: folderCount as number,
+          fileCount: fileCount as number,
+          oldest5Files: oldest5Files as oldFile[],
+          biggest5Files: biggest5Files as bigFile[],
+        };
+
+        setData(obj);
       }
+    );
+  };
 
-      setData(obj);
-    })
-
-  }
-
-  useEffect( () => {
-    changeAction(action)
-  }, [])
+  useEffect(() => {
+    changeAction(action);
+  }, []);
 
   if (!data) return null;
 
@@ -54,13 +56,13 @@ export default function FolderInfo({ changeAction }: FolderInfoProps) {
           </tr>
         </thead>
         <tbody>
-        {data.biggest5Files.map( file => (
-          <tr key={file.path}>
-            <td>{file.name}</td>
-            <td>{file.path}</td>
-            <td>{file.size.toLocaleString()}</td>
-          </tr>
-        ))}
+          {data.biggest5Files.map((file) => (
+            <tr key={file.path}>
+              <td>{file.name}</td>
+              <td>{file.path}</td>
+              <td>{file.size.toLocaleString()}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
 
@@ -74,28 +76,26 @@ export default function FolderInfo({ changeAction }: FolderInfoProps) {
           </tr>
         </thead>
         <tbody>
-        {data.oldest5Files.map( file => (
-          <tr key={file.path}>
-            <td>{file.name}</td>
-            <td>{file.path}</td>
-            <td>{file.date.toLocaleString()}</td>
-          </tr>
-        ))}
+          {data.oldest5Files.map((file) => (
+            <tr key={file.path}>
+              <td>{file.name}</td>
+              <td>{file.path}</td>
+              <td>{file.date.toLocaleString()}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
-
-
     </div>
-  )
+  );
 }
 
 interface FolderInfoProps {
-  changeAction: (action: (path: string) => void) => void
+  changeAction: (action: (path: string) => void) => void;
 }
 
 interface InfoData {
-  folderCount: number,
-  fileCount: number,
-  oldest5Files: oldFile[],
-  biggest5Files: bigFile[]
+  folderCount: number;
+  fileCount: number;
+  oldest5Files: oldFile[];
+  biggest5Files: bigFile[];
 }

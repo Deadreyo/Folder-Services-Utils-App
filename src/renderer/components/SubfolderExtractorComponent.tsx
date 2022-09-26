@@ -1,25 +1,29 @@
-import { SubfolderExtractorChannel } from "main/constants/constants"
-import { useEffect, useState } from "react"
+import { SubfolderExtractorChannel } from 'main/constants/constants';
+import { useEffect, useState } from 'react';
 
-export default function SubfolderExtractorComponent({ changeAction }: SubfolderExtractorProps) {
-  const [filesCount, setFilesCount] = useState<number | null>(null)
-  const [resultPath, setResultPath] = useState('')
+export default function SubfolderExtractorComponent({
+  changeAction,
+}: SubfolderExtractorProps) {
+  const [filesCount, setFilesCount] = useState<number | null>(null);
+  const [resultPath, setResultPath] = useState('');
 
   const action = (path: string) => {
-    window.electron.ipcRenderer.sendMessage(SubfolderExtractorChannel, [path])
+    window.electron.ipcRenderer.sendMessage(SubfolderExtractorChannel, [path]);
 
-    window.electron.ipcRenderer.once(SubfolderExtractorChannel, (filesCount) => {
-      if(filesCount || filesCount === 0) {
-        setFilesCount(filesCount as number)
-        setResultPath(path+'\\extracted')
+    window.electron.ipcRenderer.once(
+      SubfolderExtractorChannel,
+      (filesCount) => {
+        if (filesCount || filesCount === 0) {
+          setFilesCount(filesCount as number);
+          setResultPath(`${path}\\extracted`);
+        }
       }
-    })
+    );
+  };
 
-  }
-
-  useEffect( () => {
-    changeAction(action)
-  }, [])
+  useEffect(() => {
+    changeAction(action);
+  }, []);
 
   if (filesCount === null) return null;
 
@@ -42,9 +46,9 @@ export default function SubfolderExtractorComponent({ changeAction }: SubfolderE
         </table>
       </div>
     </div>
-  )
+  );
 }
 
 interface SubfolderExtractorProps {
-  changeAction: (action: (path: string) => void) => void
+  changeAction: (action: (path: string) => void) => void;
 }

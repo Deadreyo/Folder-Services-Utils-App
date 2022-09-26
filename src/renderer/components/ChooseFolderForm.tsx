@@ -1,9 +1,7 @@
 import { ChooseFolderChannel } from 'main/constants/constants';
 import { useState, MouseEventHandler } from 'react';
 
-export default function ChooseFolderForm({
-  submitAction,
-}: ChooseFolderProps) {
+export default function ChooseFolderForm({ submitAction }: ChooseFolderProps) {
   const [path, setPath] = useState('');
 
   const onPathClick: MouseEventHandler = () => {
@@ -19,10 +17,10 @@ export default function ChooseFolderForm({
   };
 
   const onSubmit: MouseEventHandler = () => {
-    if(path) {
+    if (path) {
       submitAction(path);
     } else {
-      alert("Path can't be empty")
+      alert("Path can't be empty");
     }
   };
 

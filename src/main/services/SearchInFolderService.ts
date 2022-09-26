@@ -7,23 +7,22 @@ import { SearchFolderChannel } from '../constants/constants';
 
 export default function SearchInFolderService() {
   ipcMain.on(SearchFolderChannel, async (event, args) => {
-    const pathArrays: string[] = []
-    const extSearch = ['.png', '.jpg', '.jpeg', '.gif']
+    const pathArrays: string[] = [];
+    const extSearch = ['.png', '.jpg', '.jpeg', '.gif'];
 
     async function readDir(path: string) {
       const files = await readdir(path);
 
       // For reading in parallel
       const promiseArray = files.map(async (file) => {
-        const newPath = join(path, file)
+        const newPath = join(path, file);
         const fileStat = statSync(newPath);
 
         if (!fileStat.isDirectory()) {
-          const ext = extname(newPath)
-          if(extSearch.some( val => val === ext)) {
-            pathArrays.push(newPath)
+          const ext = extname(newPath);
+          if (extSearch.some((val) => val === ext)) {
+            pathArrays.push(newPath);
           }
-
         } else {
           await readDir(newPath);
         }
@@ -32,16 +31,11 @@ export default function SearchInFolderService() {
     }
     await readDir(args[0]);
 
-    const data: searchFile[] = pathArrays.map( path => (
-      {
-        name: basename(path),
-        path,
-      }
-    ))
+    const data: searchFile[] = pathArrays.map((path) => ({
+      name: basename(path),
+      path,
+    }));
 
-    event.reply(
-      SearchFolderChannel,
-      data
-    );
+    event.reply(SearchFolderChannel, data);
   });
 }
