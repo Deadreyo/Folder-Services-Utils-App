@@ -130,10 +130,13 @@ a:hover {
 
 
 .page-header {
-  margin: 0 auto;
-  width: 128px;
   text-align: center;
   color: black;
+}
+
+.page-header-center {
+  width: 128px;
+  margin: 0 auto;
   border-bottom: 1px solid black;
 }
 

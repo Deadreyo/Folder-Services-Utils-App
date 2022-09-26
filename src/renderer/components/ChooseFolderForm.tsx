@@ -19,7 +19,11 @@ export default function ChooseFolderForm({
   };
 
   const onSubmit: MouseEventHandler = () => {
-    submitAction(path);
+    if(path) {
+      submitAction(path);
+    } else {
+      alert("Path can't be empty")
+    }
   };
 
   return (

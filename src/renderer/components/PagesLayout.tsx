@@ -14,6 +14,7 @@ import SubfolderExtractorComponent from './SubfolderExtractorComponent';
 export default function PagesLayout() {
   const [title, setTitle] = useState('Title')
   const [icon, setIcon] = useState(defaultIcon)
+  const [description, setDescription] = useState('Change the title of the page depending on the route location')
   const [action, setAction] = useState<(path: string) => void>(() => () => {
     alert('f');
   });
@@ -23,11 +24,13 @@ export default function PagesLayout() {
   useEffect( () => {
     let text = 'Title'
     let icon = ''
+    let desc = ''
     const loc = location.pathname
     switch (loc) {
       case '/info':
         text = 'Folder Info'
         icon = infoIcon
+
         break;
       case '/compress':
         text = 'Compress Images'
@@ -54,8 +57,11 @@ export default function PagesLayout() {
   return (
     <div>
       <div className="page-header">
-        <img src={icon} alt="" />
-        <h2 className="card-title">{title}</h2>
+        <div className='page-header-center'>
+          <img src={icon} alt="" />
+          <h2 className="card-title">{title}</h2>
+        </div>
+        <p>{description}</p>
       </div>
 
       <div className="page-container">
