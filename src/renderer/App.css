@@ -181,3 +181,35 @@ a:hover {
 .title-container {
   text-align: center;
 }
+
+.table-container {
+  max-height: 500px;
+  overflow: auto;
+}
+
+.table, .table th, .table td {
+  border: 1px solid black;
+}
+
+.table th {
+  background-color: #216e6b;
+}
+
+.table td {
+  background-color: #375778;
+  word-break: break-word;
+}
+
+.table {
+  width: 100%;
+  background-color: grey;
+  margin-top: 10px;
+}
+
+.table caption {
+  font-size: large;
+  padding: 5px 0;
+  background-color: #575358;
+  border: 1px solid black;
+  border-bottom: none;
+}

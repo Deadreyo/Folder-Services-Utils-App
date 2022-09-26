@@ -33,7 +33,7 @@ export default function FolderInfo({ changeAction }: FolderInfoProps) {
         <h2>Info</h2>
       </div>
 
-      <table>
+      <table className="table">
         <tr>
           <th>File Count:</th>
           <td>{data.fileCount}</td>
@@ -44,7 +44,7 @@ export default function FolderInfo({ changeAction }: FolderInfoProps) {
         </tr>
       </table>
 
-      <table>
+      <table className="table">
         <caption>Biggest Files</caption>
         <thead>
           <tr>
@@ -64,18 +64,7 @@ export default function FolderInfo({ changeAction }: FolderInfoProps) {
         </tbody>
       </table>
 
-      <table>
-        <tr>
-          <th>File Count:</th>
-          <td>{data.fileCount}</td>
-        </tr>
-        <tr>
-          <th>Folder Count:</th>
-          <td>{data.folderCount}</td>
-        </tr>
-      </table>
-
-      <table>
+      <table className="table">
         <caption>Oldest Files</caption>
         <thead>
           <tr>

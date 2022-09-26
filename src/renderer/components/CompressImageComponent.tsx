@@ -33,7 +33,7 @@ export default function CompressImageComponent({ changeAction }: CompressImagePr
 
       <h3>Results output into {resultPath}</h3>
 
-      <table>
+      <table className="table">
         <thead>
           <tr>
             <th>Name</th>

@@ -29,23 +29,24 @@ export default function SearchInFolderComponent({ changeAction }: SearchInFolder
       <div className="title-container">
         <h2>Files Found</h2>
       </div>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Path</th>
-          </tr>
-        </thead>
-        <tbody>
-        {files.map( file => (
-          <tr key={file.path}>
-            <td>{file.name}</td>
-            <td>{file.path}</td>
-          </tr>
-        ))}
-        </tbody>
-      </table>
+      <div className="table-container">
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Path</th>
+            </tr>
+          </thead>
+          <tbody>
+          {files.map( file => (
+            <tr key={file.path}>
+              <td>{file.name}</td>
+              <td>{file.path}</td>
+            </tr>
+          ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   )
 }
