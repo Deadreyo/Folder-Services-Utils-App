@@ -1,12 +1,13 @@
 import { ipcMain } from 'electron';
 import { statSync } from 'fs';
 import { readdir } from 'fs/promises';
+import { searchFile } from 'main/constants/types';
 import { basename, extname, join } from 'path';
 import { SearchFolderChannel } from '../constants/constants';
 
-export default function FolderInfoService() {
+export default function SearchInFolderService() {
   ipcMain.on(SearchFolderChannel, async (event, args) => {
-
+    console.log("start")
     const pathArrays: string[] = []
     const extSearch = ['.png', '.jpg', '.jpeg', '.gif']
 
@@ -32,11 +33,10 @@ export default function FolderInfoService() {
     }
     await readDir(args[0]);
 
-    const data = pathArrays.map( path => (
+    const data: searchFile[] = pathArrays.map( path => (
       {
         name: basename(path),
         path,
-
       }
     ))
 

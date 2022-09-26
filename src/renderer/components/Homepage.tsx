@@ -6,7 +6,7 @@ export default function Homepage() {
     <div className="homepage">
       <div className="row">
         <Card icon={icon} link="/info" title="Folder Info" />
-        <Card icon={icon} link="/" title="Search in Folder" />
+        <Card icon={icon} link="/search" title="Search in Folder" />
       </div>
       <div className="row">
         <Card icon={icon} link="/compress" title="Compress Images" />

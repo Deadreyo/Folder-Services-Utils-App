@@ -4,6 +4,7 @@ import ChooseFolderForm from './ChooseFolderForm';
 import CompressImageComponent from './CompressImageComponent';
 import FolderInfo from './FolderInfoComponent';
 import icon from './icon.png';
+import SearchInFolderComponent from './SearchInFolderComponent';
 
 export default function PagesLayout() {
   const [title, setTitle] = useState('Title')
@@ -22,6 +23,9 @@ export default function PagesLayout() {
         break;
       case '/compress':
         val = 'Compress Images'
+        break;
+      case '/search':
+        val = 'Deep Image Search'
         break;
     }
 
@@ -49,6 +53,10 @@ export default function PagesLayout() {
           <Route
             path="/compress"
             element={<CompressImageComponent changeAction={changeAction} />}
+          />
+          <Route
+            path="/search"
+            element={<SearchInFolderComponent changeAction={changeAction} />}
           />
         </Routes>
       </div>

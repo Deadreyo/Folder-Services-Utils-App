@@ -10,7 +10,6 @@ export default function ChooseFolderForm({
     window.electron.ipcRenderer.sendMessage(ChooseFolderChannel, ['hi']);
     window.electron.ipcRenderer.once(ChooseFolderChannel, (args) => {
       if (args instanceof Array && args.length > 0) {
-        alert('Success!');
         setPath(args[0]);
       } else {
         alert('Fail');

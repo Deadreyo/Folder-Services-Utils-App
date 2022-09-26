@@ -6,7 +6,6 @@ export default function CompressImageComponent({ changeAction }: CompressImagePr
   const [statistics, setStatistics] = useState<compressStatistic[] | null>(null)
   const [resultPath, setResultPath] = useState('')
   const action = (path: string) => {
-    alert("sent")
     window.electron.ipcRenderer.sendMessage(CompressImagesChannel, [path])
 
     window.electron.ipcRenderer.once(CompressImagesChannel, (statisticsArr) => {
@@ -33,9 +32,8 @@ export default function CompressImageComponent({ changeAction }: CompressImagePr
       </div>
 
       <h3>Results output into {resultPath}</h3>
-      
+
       <table>
-        <caption>Statistics Report</caption>
         <thead>
           <tr>
             <th>Name</th>

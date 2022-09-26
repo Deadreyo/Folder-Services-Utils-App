@@ -6,7 +6,6 @@ export default function FolderInfo({ changeAction }: FolderInfoProps) {
   const [data, setData] = useState<InfoData | null>(null)
 
   const action = (path: string) => {
-    alert("sent")
     window.electron.ipcRenderer.sendMessage(FolderInfoChannel, [path])
 
     window.electron.ipcRenderer.once(FolderInfoChannel, (folderCount,  fileCount, oldest5Files, biggest5Files) => {
