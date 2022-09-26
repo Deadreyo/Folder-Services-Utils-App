@@ -19,9 +19,8 @@ What you can do with this application:
 - Extract all files from a folder's subfolders and its nested subfolders, and put them all into 1 place without being isolated in different folders.
 
 ## Demo
-<p align="center">
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/9JJ2meowozg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</p>
 
 <img src="./github-images/folder-info.png" alt="Folder Info page" width="49%"><img src="./github-images/compress.png" alt="Compress Images page" width="49%"><img src="./github-images/image-search.png" alt="Image Search page" width="49%"><img src="./github-images/extractor.png" alt="Files Extraction page" width="49%">
 
