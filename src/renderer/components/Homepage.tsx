@@ -9,7 +9,7 @@ export default function Homepage() {
         <Card icon={icon} link="/" title="Search in Folder" />
       </div>
       <div className="row">
-        <Card icon={icon} link="/" title="Compress Images" />
+        <Card icon={icon} link="/compress" title="Compress Images" />
         <Card icon={icon} link="/" title="Folder Content Renamer" />
       </div>
     </div>

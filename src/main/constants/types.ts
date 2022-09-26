@@ -9,3 +9,9 @@ export type bigFile = {
   path: string;
   size: number;
 };
+
+export type compressStatistic = {
+  name: string;
+  before: string;
+  after: string;
+}
