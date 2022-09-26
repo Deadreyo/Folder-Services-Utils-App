@@ -20,7 +20,7 @@ What you can do with this application:
 
 ## Demo
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/9JJ2meowozg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+There's a [video demo](https://youtu.be/9JJ2meowozg) for the application on YouTube, going through all its functionalities.
 
 <img src="./github-images/folder-info.png" alt="Folder Info page" width="49%"><img src="./github-images/compress.png" alt="Compress Images page" width="49%"><img src="./github-images/image-search.png" alt="Image Search page" width="49%"><img src="./github-images/extractor.png" alt="Files Extraction page" width="49%">
 
