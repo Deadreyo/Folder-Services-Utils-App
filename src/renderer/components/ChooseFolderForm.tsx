@@ -2,7 +2,6 @@ import { ChooseFolderChannel } from 'main/constants/constants';
 import { useState, MouseEventHandler } from 'react';
 
 export default function ChooseFolderForm({
-  changePath,
   submitAction,
 }: ChooseFolderProps) {
   const [path, setPath] = useState('');
@@ -13,7 +12,6 @@ export default function ChooseFolderForm({
       if (args instanceof Array && args.length > 0) {
         alert('Success!');
         setPath(args[0]);
-        changePath(args[0]);
       } else {
         alert('Fail');
         console.log(args);
@@ -44,6 +42,5 @@ export default function ChooseFolderForm({
 }
 
 interface ChooseFolderProps {
-  changePath: (path: string) => void;
   submitAction: (path: string) => void;
 }

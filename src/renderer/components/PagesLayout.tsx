@@ -5,14 +5,9 @@ import FolderInfo from './FolderInfoComponent';
 import icon from './icon.png';
 
 export default function PagesLayout() {
-  const [path, setPath] = useState('');
   const [action, setAction] = useState<(path: string) => void>(() => () => {
     alert('f');
   });
-
-  function changePath(path: string) {
-    setPath(path);
-  }
 
   function changeAction(func: (path: string) => void) {
     setAction(() => func);
@@ -26,10 +21,14 @@ export default function PagesLayout() {
       </div>
 
       <div className="page-container">
-        <ChooseFolderForm changePath={changePath} submitAction={action} />
+        <ChooseFolderForm submitAction={action}/>
         <Routes>
           <Route
             path="/info"
+            element={<FolderInfo changeAction={changeAction} />}
+          />
+          <Route
+            path="/compress"
             element={<FolderInfo changeAction={changeAction} />}
           />
         </Routes>
