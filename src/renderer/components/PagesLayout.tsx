@@ -9,6 +9,7 @@ import searchIcon from '../assets/search.png'
 import compressIcon from '../assets/data-compression.png'
 import bundleIcon from '../assets/data-collection.png'
 import defaultIcon from '../assets/icon.png'
+import SubfolderExtractorComponent from './SubfolderExtractorComponent';
 
 export default function PagesLayout() {
   const [title, setTitle] = useState('Title')
@@ -71,6 +72,10 @@ export default function PagesLayout() {
           <Route
             path="/search"
             element={<SearchInFolderComponent changeAction={changeAction} />}
+          />
+          <Route
+            path="/bundle"
+            element={<SubfolderExtractorComponent changeAction={changeAction} />}
           />
         </Routes>
       </div>

@@ -7,7 +7,6 @@ import { SearchFolderChannel } from '../constants/constants';
 
 export default function SearchInFolderService() {
   ipcMain.on(SearchFolderChannel, async (event, args) => {
-    console.log("start")
     const pathArrays: string[] = []
     const extSearch = ['.png', '.jpg', '.jpeg', '.gif']
 
