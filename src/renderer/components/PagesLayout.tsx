@@ -30,24 +30,28 @@ export default function PagesLayout() {
       case '/info':
         text = 'Folder Info'
         icon = infoIcon
-
+        desc = 'Gets information about this folder and the biggest and oldest files nested within.'
         break;
       case '/compress':
         text = 'Compress Images'
         icon = compressIcon
+        desc = 'Compresses all images inside this folder and put them in a new folder. Does not dive into subfolders'
         break;
       case '/search':
         text = 'Deep Image Search'
         icon = searchIcon
+        desc = 'Searches for and shows all images nested inside this folder. Dives into subfolders.'
         break;
       case '/bundle':
         text = 'Subfolders Extractor'
         icon = bundleIcon
+        desc = 'Extracts all files from the subfolders and puts them all together in a new folder.'
         break;
     }
 
     setTitle(text);
     setIcon(icon)
+    setDescription(desc)
   }, [])
 
   function changeAction(func: (path: string) => void) {
