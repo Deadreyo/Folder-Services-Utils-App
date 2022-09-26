@@ -59,7 +59,7 @@ export default function FolderInfo({ changeAction }: FolderInfoProps) {
           <tr key={file.path}>
             <td>{file.name}</td>
             <td>{file.path}</td>
-            <td>{file.size}</td>
+            <td>{file.size.toLocaleString()}</td>
           </tr>
         ))}
         </tbody>
