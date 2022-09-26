@@ -9,13 +9,13 @@ export default function FolderInfoService() {
   ipcMain.on(FolderInfoChannel, async (event, args) => {
     let folderCount = 0;
     let fileCount = 0;
-    const oldest5Files = new Array<oldFile>(5).fill({
+    let oldest5Files = new Array<oldFile>(5).fill({
       name: 'test',
       path: 'test',
       date: new Date(),
     });
 
-    const biggest5Files = new Array<bigFile>(5).fill({
+    let biggest5Files = new Array<bigFile>(5).fill({
       name: 'test',
       path: 'test',
       size: 0,
@@ -27,7 +27,6 @@ export default function FolderInfoService() {
       // For reading in parallel
       const promiseArray = files.map(async (file) => {
         const fileStat = statSync(join(path, file));
-        console.log('---- ', file, fileStat.isFile());
         if (!fileStat.isDirectory()) {
           fileCount++;
 
@@ -54,7 +53,7 @@ export default function FolderInfoService() {
           }
 
           function CompareSize() {
-            const { size } = fileStat;
+            const size = fileStat.size / (1024 * 1024);
             for (let i = 0; i < biggest5Files.length; i++) {
               const item = biggest5Files[i];
               if (size > item.size) {
@@ -67,7 +66,7 @@ export default function FolderInfoService() {
                 biggest5Files[i] = {
                   name: file,
                   path: join(path, file),
-                  size,
+                  size, // from bytes to MB
                 };
 
                 break;
@@ -77,6 +76,7 @@ export default function FolderInfoService() {
 
           CompareDate();
           CompareSize();
+
         } else {
           folderCount++;
           await readDir(join(path, file));
@@ -85,6 +85,9 @@ export default function FolderInfoService() {
       await Promise.all(promiseArray);
     }
     await readDir(args[0]);
+
+    oldest5Files = oldest5Files.filter( val => val.name !== "test")
+    biggest5Files = biggest5Files.filter( val => val.name !== "test")
 
     console.log(oldest5Files);
     console.log(biggest5Files);
