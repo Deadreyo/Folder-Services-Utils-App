@@ -7,7 +7,7 @@ export default function App() {
   return (
     <Router>
       <header className="header">
-        <Link to="/">Folder Utils App</Link>
+        <Link to="/">Folder Service Utility App</Link>
       </header>
       <main className="container">
         <Routes>

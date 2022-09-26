@@ -11,7 +11,7 @@ export default function SubfolderExtractorComponent({ changeAction }: SubfolderE
     window.electron.ipcRenderer.once(SubfolderExtractorChannel, (filesCount) => {
       if(filesCount || filesCount === 0) {
         setFilesCount(filesCount as number)
-        setResultPath(path+'\\compressed')
+        setResultPath(path+'\\extracted')
       }
     })
 
