@@ -1,9 +1,7 @@
 import { SubfolderExtractorChannel } from 'main/constants/constants';
 import { useEffect, useState } from 'react';
 
-export default function SubfolderExtractorComponent({
-  changeAction,
-}: SubfolderExtractorProps) {
+const SubfolderExtractorComponent: PageComponentFC = ({ changeAction }) => {
   const [filesCount, setFilesCount] = useState<number | null>(null);
   const [resultPath, setResultPath] = useState('');
 
@@ -12,9 +10,9 @@ export default function SubfolderExtractorComponent({
 
     window.electron.ipcRenderer.once(
       SubfolderExtractorChannel,
-      (filesCount) => {
-        if (filesCount || filesCount === 0) {
-          setFilesCount(filesCount as number);
+      (incFilesCount) => {
+        if (incFilesCount || incFilesCount === 0) {
+          setFilesCount(incFilesCount as number);
           setResultPath(`${path}\\extracted`);
         }
       }
@@ -47,8 +45,6 @@ export default function SubfolderExtractorComponent({
       </div>
     </div>
   );
-}
+};
 
-interface SubfolderExtractorProps {
-  changeAction: (action: (path: string) => void) => void;
-}
+export default SubfolderExtractorComponent;

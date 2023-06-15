@@ -2,9 +2,7 @@ import { SearchFolderChannel } from 'main/constants/constants';
 import { searchFile } from 'main/constants/types';
 import { useEffect, useState } from 'react';
 
-export default function SearchInFolderComponent({
-  changeAction,
-}: SearchInFolderProps) {
+const SearchInFolderComponent: PageComponentFC = ({ changeAction }) => {
   const [files, setFiles] = useState<searchFile[] | null>(null);
 
   const action = (path: string) => {
@@ -50,8 +48,6 @@ export default function SearchInFolderComponent({
       </div>
     </div>
   );
-}
+};
 
-interface SearchInFolderProps {
-  changeAction: (action: (path: string) => void) => void;
-}
+export default SearchInFolderComponent;

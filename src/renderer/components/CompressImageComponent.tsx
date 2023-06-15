@@ -2,9 +2,7 @@ import { CompressImagesChannel } from 'main/constants/constants';
 import { compressStatistic } from 'main/constants/types';
 import { useEffect, useState } from 'react';
 
-export default function CompressImageComponent({
-  changeAction,
-}: CompressImageProps) {
+const CompressImageComponent: PageComponentFC = ({ changeAction }) => {
   const [statistics, setStatistics] = useState<compressStatistic[] | null>(
     null
   );
@@ -60,8 +58,6 @@ export default function CompressImageComponent({
       </table>
     </div>
   );
-}
+};
 
-interface CompressImageProps {
-  changeAction: (action: (path: string) => void) => void;
-}
+export default CompressImageComponent;

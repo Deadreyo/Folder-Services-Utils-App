@@ -2,7 +2,7 @@ import { FolderInfoChannel } from 'main/constants/constants';
 import { bigFile, oldFile } from 'main/constants/types';
 import { useEffect, useState } from 'react';
 
-export default function FolderInfo({ changeAction }: FolderInfoProps) {
+const FolderInfoComponent: PageComponentFC = ({ changeAction }) => {
   const [data, setData] = useState<InfoData | null>(null);
 
   const action = (path: string) => {
@@ -87,11 +87,7 @@ export default function FolderInfo({ changeAction }: FolderInfoProps) {
       </table>
     </div>
   );
-}
-
-interface FolderInfoProps {
-  changeAction: (action: (path: string) => void) => void;
-}
+};
 
 interface InfoData {
   folderCount: number;
@@ -99,3 +95,5 @@ interface InfoData {
   oldest5Files: oldFile[];
   biggest5Files: bigFile[];
 }
+
+export default FolderInfoComponent;
